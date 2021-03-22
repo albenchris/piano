@@ -26,9 +26,17 @@ body {
     border: 1px solid #333;
 }
 
+.white.active {
+    background-color: #ccc;
+}
+
 .black {
     --width: 60px;
     background-color: black;
     margin: 0 calc(var(--width) / -2);
     z-index: 99999;
+}
+
+.black.active {
+    background-color: #333;
 }
