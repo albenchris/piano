@@ -1,7 +1,22 @@
+const WHITE_KEYS = ["a", "s", "d", "f", "g", "h", "j", "k"];
+const BLACK_KEYS = ["w", "e", "t", "y", "u"];
+
 const keys = document.querySelectorAll(".key");
+const whiteKeys = document.querySelectorAll(".key.white");
+const blackKeys = document.querySelectorAll(".key.black");
 
 keys.forEach(key => {
     key.addEventListener("click", () => playNote(key));
+});
+
+document.addEventListener("keydown", event => {
+    if (event.repeat) return;
+    const key = event.key;
+    const whiteKeyIndex = WHITE_KEYS.indexOf(key);
+    const blackKeyIndex = BLACK_KEYS.indexOf(key);
+
+    if (whiteKeyIndex > -1) playNote(whiteKeys[whiteKeyIndex]);
+    if (blackKeyIndex > -1) playNote(blackKeys[blackKeyIndex]);
 });
 
 function playNote(key) {
@@ -12,4 +27,4 @@ function playNote(key) {
     noteAudio.addEventListener("ended", () => {
         key.classList.remove("active");
     });
-}
+};
